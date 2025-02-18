@@ -8,11 +8,11 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'yarn install'  // Install dependencies (including devDependencies)
-            }
-        }
+//         stage('Install Dependencies') {
+//             steps {
+//                 bat 'yarn install'  // Install dependencies (including devDependencies)
+//             }
+//         }
 //
 //         stage('Run Tests') {
 //             steps {
