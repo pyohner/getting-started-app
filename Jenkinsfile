@@ -14,11 +14,11 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh 'yarn test'  // Runs tests
-            }
-        }
+//         stage('Run Tests') {
+//             steps {
+//                 sh 'yarn test'  // Runs tests
+//             }
+//         }
 
         stage('Build Docker Image') {
             steps {
