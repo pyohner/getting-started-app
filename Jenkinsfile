@@ -8,17 +8,17 @@ pipeline {
             }
         }
 
-//         stage('Install Dependencies') {
-//             steps {
-//                 bat 'yarn install'  // Install dependencies (including devDependencies)
-//             }
-//         }
-//
-        stage('Run Tests') {
+        stage('Install Dependencies') {
             steps {
-                bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn run test'  // Runs tests
+                bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn install'  // Install dependencies (including devDependencies)
             }
         }
+
+//         stage('Run Tests') {
+//             steps {
+//                 bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn test'  // Runs tests
+//             }
+//         }
 
         stage('Build Docker Image') {
             steps {
