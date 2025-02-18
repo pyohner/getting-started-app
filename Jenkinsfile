@@ -16,7 +16,7 @@ pipeline {
 //
         stage('Run Tests') {
             steps {
-                bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn test'  // Runs tests
+                bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn run test'  // Runs tests
             }
         }
 
