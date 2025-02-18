@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/pyohner/getting-started-app.git'  // Replace with your actual repo
+                git branch: 'main', url: 'https://github.com/pyohner/getting-started-app.git'  // Replace with your actual repo
             }
         }
 
