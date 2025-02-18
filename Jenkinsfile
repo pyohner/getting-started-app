@@ -7,29 +7,29 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/pyohner/getting-started-app.git'  // Replace with your actual repo
             }
         }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'yarn install'  // Install dependencies (including devDependencies)
-            }
-        }
+//
+//         stage('Install Dependencies') {
+//             steps {
+//                 sh 'yarn install'  // Install dependencies (including devDependencies)
+//             }
+//         }
 
 //         stage('Run Tests') {
 //             steps {
 //                 sh 'yarn test'  // Runs tests
 //             }
 //         }
-
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t getting-started-app .'  // Build Docker image
-            }
-        }
-
-        stage('Run App in Docker') {
-            steps {
-                sh 'docker run -d -p 3000:3000 --name getting-started-app getting-started-app'
-            }
-        }
+//
+//         stage('Build Docker Image') {
+//             steps {
+//                 sh 'docker build -t getting-started-app .'  // Build Docker image
+//             }
+//         }
+//
+//         stage('Run App in Docker') {
+//             steps {
+//                 sh 'docker run -d -p 3000:3000 --name getting-started-app getting-started-app'
+//             }
+//         }
     }
 }
