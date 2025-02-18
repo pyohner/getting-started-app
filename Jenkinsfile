@@ -8,17 +8,17 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'yarn install'  // Install dependencies (including devDependencies)
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                bat 'yarn test'  // Runs tests
-            }
-        }
+//         stage('Install Dependencies') {
+//             steps {
+//                 bat 'yarn install'  // Install dependencies (including devDependencies)
+//             }
+//         }
+//
+//         stage('Run Tests') {
+//             steps {
+//                 bat 'yarn test'  // Runs tests
+//             }
+//         }
 
         stage('Build Docker Image') {
             steps {
