@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                   bat 'npm yarn install'  // Install dependencies (including devDependencies)
+                   bat 'npm ci'  // Install dependencies (including devDependencies)
 //                 bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn install'  // Install dependencies (including devDependencies)
             }
         }
