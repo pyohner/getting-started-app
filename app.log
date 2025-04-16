@@ -1,0 +1,10 @@
+2025-04-16T20:36:11.075Z [info]: Item added: id=something-not-a-uuid, name="A sample item"
+2025-04-16T20:36:11.074Z [info]: Item updated: id=1234, name="New title", completed=undefined
+2025-04-16T20:36:42.149Z [info]: Item added: id=something-not-a-uuid, name="A sample item"
+2025-04-16T20:39:11.193Z [info]: Item added: id=something-not-a-uuid, name="A sample item"
+2025-04-16T20:39:11.414Z [info]: Item deleted: id=12345
+2025-04-16T20:39:42.397Z [info]: Item added: id=something-not-a-uuid, name="A sample item"
+2025-04-16T20:39:42.439Z [info]: Item deleted: id=12345
+2025-04-16T20:40:09.965Z [info]: Item added: id=something-not-a-uuid, name="A sample item"
+2025-04-16T20:40:09.985Z [info]: Item deleted: id=12345
+2025-04-16T20:40:10.176Z [info]: Item updated: id=1234, name="New title", completed=false

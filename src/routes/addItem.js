@@ -1,4 +1,5 @@
 const db = require('../persistence');
+const logger = require('../utils/logger');
 const {v4 : uuid} = require('uuid');
 
 module.exports = async (req, res) => {
@@ -9,5 +10,6 @@ module.exports = async (req, res) => {
     };
 
     await db.storeItem(item);
+    logger.info(`Item added: id=${item.id}, name="${item.name}"`);
     res.send(item);
 };
