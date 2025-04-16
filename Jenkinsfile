@@ -14,11 +14,11 @@ pipeline {
             }
         }
 
-//         stage('Run Tests') {
-//             steps {
-//                 bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn test'  // Runs tests
-//             }
-//         }
+        stage('Run Tests') {
+            steps {
+                bat 'C:/Users/yohnep25/AppData/Roaming/npm/test'  // Runs tests
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
