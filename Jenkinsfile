@@ -10,13 +10,15 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn install'  // Install dependencies (including devDependencies)
+                   bat 'yarn install'  // Install dependencies (including devDependencies)
+//                 bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn install'  // Install dependencies (including devDependencies)
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'C:/Users/yohnep25/AppData/Roaming/npm/test'  // Runs tests
+                bat 'yarn test'  // Runs tests
+//                 bat 'C:/Users/yohnep25/AppData/Roaming/npm/yarn test'  // Runs tests
             }
         }
 
