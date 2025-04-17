@@ -1,14 +1,14 @@
 const express = require('express');
 const morgan  = require('morgan');
 const logger  = require('./utils/logger');
-const os      = require('os');
+const os= require('os');
 const app = express();
-const db = require('./persistence');
+const db= require('./persistence');
 const getItems = require('./routes/getItems');
 const addItem = require('./routes/addItem');
 const updateItem = require('./routes/updateItem');
 const deleteItem = require('./routes/deleteItem');
-const fs = require('fs');
+const fs= require('fs');
 
 // resolve container name from Docker metadata if available
 function getContainerName() {
