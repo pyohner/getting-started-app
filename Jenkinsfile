@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+            // names for your image & container
+            IMAGE_NAME      = 'getting-started-app'
+            CONTAINER_NAME  = 'getting-started-app'
+        }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -22,14 +28,25 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t getting-started-app .'  // Build Docker image
+                bat 'docker build -t %IMAGE_NAME%:%BUILD_NUMBER% .'  // Build Docker image
             }
         }
 
-        stage('Run App in Docker') {
+        stage('Deploy') {
             steps {
-                bat 'docker run -d -p 3000:3000 --name getting-started-app getting-started-app'
+                // stop & remove any existing container (ignore errors if it doesn't exist)
+                bat '''
+                    docker stop %CONTAINER_NAME% || echo "container not running"
+                    docker rm   %CONTAINER_NAME% || echo "container not found"
+                '''
+                // run the newly built image
+                bat "docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%:%BUILD_NUMBER%"
             }
+
+
+//             steps {
+//                 bat 'docker run -d -p 3000:3000 --name getting-started-app getting-started-app'
+//             }
         }
     }
 }
