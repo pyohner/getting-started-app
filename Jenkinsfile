@@ -35,12 +35,25 @@ pipeline {
         stage('Deploy') {
 
         steps {
-        set BUILD_NUMBER=%BUILD_NUMBER%
-            // tear down old stack
-            bat 'docker-compose down'
-            // build & bring up 3 copies + NGINX LB
-            bat 'docker-compose up -d --build --scale app=3'
+            bat '''
+              REM — export the Jenkins BUILD_NUMBER into this shell
+              set BUILD_NUMBER=%BUILD_NUMBER%
+
+              REM — tear down any existing app+nginx stack
+              docker-compose down
+
+              REM — rebuild image, spin up 3 replicas + nginx LB
+              docker-compose up -d --build --scale app=3
+            '''
           }
+
+//         steps {
+//         set BUILD_NUMBER=%BUILD_NUMBER%
+//             // tear down old stack
+//             bat 'docker-compose down'
+//             // build & bring up 3 copies + NGINX LB
+//             bat 'docker-compose up -d --build --scale app=3'
+//           }
 
 //             steps {
 //                 // stop & remove any existing container (ignore errors if it doesn't exist)
