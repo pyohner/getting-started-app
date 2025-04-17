@@ -8,6 +8,17 @@ const getItems = require('./routes/getItems');
 const addItem = require('./routes/addItem');
 const updateItem = require('./routes/updateItem');
 const deleteItem = require('./routes/deleteItem');
+const fs = require('fs');
+
+// resolve container name from Docker metadata if available
+function getContainerName() {
+    try {
+        // This will be something like: getting-started-app_app_2
+        return fs.readFileSync('/etc/hostname', 'utf8').trim();
+    } catch (err) {
+        return os.hostname();
+    }
+}
 
 // Log HTTP requests via morgan into the custom logger
 app.use(morgan('combined', {
@@ -16,7 +27,7 @@ app.use(morgan('combined', {
 
 // Attach the container's hostname to every response header
 app.use((req, res, next) => {
-    const instanceId = process.env.CONTAINER_NAME || os.hostname(); // fallback if env var not set
+    const instanceId = getContainerName();
     res.setHeader('X-Instance-Id', instanceId);
     next();
 });
@@ -50,7 +61,7 @@ const gracefulShutdown = () => {
 );
 
 // Global error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     logger.error('Unhandled error', err);
     res.status(500).send('Internal Server Error');
 });
