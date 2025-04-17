@@ -16,7 +16,8 @@ app.use(morgan('combined', {
 
 // Attach the container's hostname to every response header
 app.use((req, res, next) => {
-    res.setHeader('X-Instance-Id', os.hostname());
+    const instanceId = process.env.CONTAINER_NAME || os.hostname(); // fallback if env var not set
+    res.setHeader('X-Instance-Id', instanceId);
     next();
 });
 
