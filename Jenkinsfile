@@ -33,15 +33,23 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                // stop & remove any existing container (ignore errors if it doesn't exist)
-                bat '''
-                    docker stop %CONTAINER_NAME% || echo "container not running"
-                    docker rm   %CONTAINER_NAME% || echo "container not found"
-                '''
-                // run the newly built image
-                bat "docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%:%BUILD_NUMBER%"
-            }
+
+        steps {
+            // tear down old stack
+            bat 'docker-compose down'
+            // build & bring up 3 copies + NGINX LB
+            bat 'docker-compose up -d --build --scale app=3'
+          }
+
+//             steps {
+//                 // stop & remove any existing container (ignore errors if it doesn't exist)
+//                 bat '''
+//                     docker stop %CONTAINER_NAME% || echo "container not running"
+//                     docker rm   %CONTAINER_NAME% || echo "container not found"
+//                 '''
+//                 // run the newly built image
+//                 bat "docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%:%BUILD_NUMBER%"
+//             }
 
 
 //             steps {
