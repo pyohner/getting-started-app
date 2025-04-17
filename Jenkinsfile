@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-            // names for your image & container
+            // names for image & container
             IMAGE_NAME      = 'getting-started-app'
             CONTAINER_NAME  = 'getting-started-app'
         }
@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/pyohner/getting-started-app.git'  // Replace with your actual repo
+                git branch: 'main', url: 'https://github.com/pyohner/getting-started-app.git'  // Repo
             }
         }
 
@@ -46,29 +46,6 @@ pipeline {
               docker-compose up -d --build --scale app=3
             '''
           }
-
-//         steps {
-//         set BUILD_NUMBER=%BUILD_NUMBER%
-//             // tear down old stack
-//             bat 'docker-compose down'
-//             // build & bring up 3 copies + NGINX LB
-//             bat 'docker-compose up -d --build --scale app=3'
-//           }
-
-//             steps {
-//                 // stop & remove any existing container (ignore errors if it doesn't exist)
-//                 bat '''
-//                     docker stop %CONTAINER_NAME% || echo "container not running"
-//                     docker rm   %CONTAINER_NAME% || echo "container not found"
-//                 '''
-//                 // run the newly built image
-//                 bat "docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%:%BUILD_NUMBER%"
-//             }
-
-
-//             steps {
-//                 bat 'docker run -d -p 3000:3000 --name getting-started-app getting-started-app'
-//             }
         }
     }
 }

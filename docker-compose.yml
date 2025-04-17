@@ -15,7 +15,7 @@ services:
     # Pull the official NGINX Alpine image—no host install needed
     image: nginx:alpine
     ports:
-      - "3000:80"      # Expose container port 80 on your host’s 3000
+      - "3000:80"      # Expose container port 80 on host 3000
     depends_on:
       - app
     volumes:
