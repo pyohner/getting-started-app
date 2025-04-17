@@ -35,6 +35,7 @@ pipeline {
         stage('Deploy') {
 
         steps {
+        set BUILD_NUMBER=%BUILD_NUMBER%
             // tear down old stack
             bat 'docker-compose down'
             // build & bring up 3 copies + NGINX LB
